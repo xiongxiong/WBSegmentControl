@@ -2,6 +2,8 @@ use_frameworks!
 
 target 'WBSegmentControl_Example', :exclusive => true do
   pod 'WBSegmentControl', :path => '../'
+  pod 'SnapKit'
+  pod 'SwiftHEXColors'
 end
 
 target 'WBSegmentControl_Tests', :exclusive => true do
