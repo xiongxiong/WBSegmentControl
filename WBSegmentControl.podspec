@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 WBSegmentedControl is an easy to use, customizable segment control, has several effects, can be used to show labels or tabs.
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/WBSegmentControl"
+  s.homepage         = "https://github.com/xiongxiong/WBSegmentControl"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "xiongxiong" => "ximengwuheng@163.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/WBSegmentControl.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/xiongxiong/WBSegmentControl.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
