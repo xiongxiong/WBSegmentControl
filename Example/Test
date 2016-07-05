@@ -1,0 +1,17 @@
+[!] Unknown command: `Product-`
+
+Usage:
+
+    $ pod try NAME|URL
+
+      Downloads the Pod with the given `NAME` (or Git `URL`), install its dependencies
+      if needed and opens its demo project. If a Git URL is provided the head of the
+      repo is used.
+
+Options:
+
+    --no-repo-update   Skip running `pod repo update` before install
+    --silent           Show nothing
+    --verbose          Show more debugging information
+    --no-ansi          Show output without ANSI codes
+    --help             Show help banner of specified command

@@ -1,0 +1,6 @@
+framework module Pods_WBSegmentControl_Tests {
+  umbrella header "Pods-WBSegmentControl_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

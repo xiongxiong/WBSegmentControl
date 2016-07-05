@@ -1,0 +1,6 @@
+framework module WBSegmentControl {
+  umbrella header "WBSegmentControl-umbrella.h"
+
+  export *
+  module * { export * }
+}

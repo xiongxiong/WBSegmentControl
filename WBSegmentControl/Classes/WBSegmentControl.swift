@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: WBSegmentControlDelegate
 public protocol WBSegmentControlDelegate {
-    func segmentControl(segmentControl: WBSegmentControl, didSelectIndex index: Int)
+    func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int)
 }
 
 // MARK: WBSegmentControl
@@ -338,11 +338,18 @@ public class WBSegmentControl: UIControl {
     
     override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch = touches.first {
-            self.selectedIndex = self.indexForTouch(touch.locationInView(self))
+            updateSelectedIndex(self.indexForTouch(touch.locationInView(self)))
         }
     }
     
     // MARK: Custom methods
+    func updateSelectedIndex(index: Int) {
+        if index != selectedIndex {
+            delegate?.segmentControl(self, selectIndex: index, oldIndex: selectedIndex)
+            selectedIndex = index
+        }
+    }
+    
     func selectedIndexChanged(newIndex: Int, oldIndex: Int) {
         if self.enableAnimation {
             CATransaction.begin()
@@ -364,7 +371,6 @@ public class WBSegmentControl: UIControl {
         }
         
         self.sendActionsForControlEvents(.ValueChanged)
-        self.delegate?.segmentControl(self, didSelectIndex: selectedIndex)
     }
     
     func didSelectedIndexChanged(newIndex: Int, oldIndex: Int) {

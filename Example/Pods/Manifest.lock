@@ -1,0 +1,48 @@
+PODS:
+  - FBSnapshotTestCase (2.1.1):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.1)
+  - FBSnapshotTestCase/Core (2.1.1)
+  - FBSnapshotTestCase/SwiftSupport (2.1.1):
+    - FBSnapshotTestCase/Core
+  - Nimble (3.2.0)
+  - Nimble-Snapshots (4.0.1):
+    - FBSnapshotTestCase (~> 2.0)
+    - Nimble
+    - Quick
+  - Quick (0.9.2)
+  - SnapKit (0.20.0)
+  - SwiftHEXColors (1.0.4)
+  - WBSegmentControl (0.1.1)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase (from `https://github.com/facebook/ios-snapshot-test-case.git`)
+  - Nimble (~> 3.0)
+  - Nimble-Snapshots
+  - Quick (~> 0.8)
+  - SnapKit
+  - SwiftHEXColors
+  - WBSegmentControl (from `../`)
+
+EXTERNAL SOURCES:
+  FBSnapshotTestCase:
+    :git: https://github.com/facebook/ios-snapshot-test-case.git
+  WBSegmentControl:
+    :path: ../
+
+CHECKOUT OPTIONS:
+  FBSnapshotTestCase:
+    :commit: 040817b1295a91fc239d8433a087d7b50bfa5dd6
+    :git: https://github.com/facebook/ios-snapshot-test-case.git
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 432afd8d059ccef7f207225894840a03fbcf7474
+  Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
+  Nimble-Snapshots: 2d15a585b816f7d14947ed6e172218f9d0980ea8
+  Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
+  SnapKit: 5fce3c1bbbf1fbd31de9aa92f33eb9fa03f15650
+  SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
+  WBSegmentControl: efb97cc46df17fa2f93401b54a0ea18018733a8f
+
+PODFILE CHECKSUM: c28e3ddd091c16f5a0d914544afad153f334245c
+
+COCOAPODS: 1.0.0

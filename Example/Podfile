@@ -1,16 +1,17 @@
 use_frameworks!
 
-target 'WBSegmentControl_Example', :exclusive => true do
+target 'WBSegmentControl_Example' do
   pod 'WBSegmentControl', :path => '../'
   pod 'SnapKit'
   pod 'SwiftHEXColors'
-end
-
-target 'WBSegmentControl_Tests', :exclusive => true do
-  pod 'WBSegmentControl', :path => '../'
-
-  pod 'Quick', '~> 0.8'
-  pod 'Nimble', '~> 3.0'
-  pod 'FBSnapshotTestCase'
-  pod 'Nimble-Snapshots'
+  
+  target 'WBSegmentControl_Tests' do
+      inherit! :search_paths
+      
+      pod 'Quick', '~> 0.8'
+      pod 'Nimble', '~> 3.0'
+      pod 'FBSnapshotTestCase', :git => 'https://github.com/facebook/ios-snapshot-test-case.git'
+      pod 'Nimble-Snapshots'
+  end
+  
 end

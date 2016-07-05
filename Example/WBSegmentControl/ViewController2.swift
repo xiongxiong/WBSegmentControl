@@ -11,7 +11,7 @@ import WBSegmentControl
 import SnapKit
 import SwiftHEXColors
 
-class ViewController: UIViewController {
+class ViewController2: UIViewController {
     
     override func loadView() {
         super.loadView()
