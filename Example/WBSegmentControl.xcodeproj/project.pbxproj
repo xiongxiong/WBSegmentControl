@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		42687C181D2B2BFF00398368 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42687C171D2B2BFF00398368 /* ViewController1.swift */; };
-		42A7A3141D2B3F300016ACED /* WBSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A7A3131D2B3F300016ACED /* WBSegmentControl.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController2.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -34,7 +33,6 @@
 		2EE89C2366D9F4D20E3D4088 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4214F6E73BCC48C282EBD5C4 /* WBSegmentControl.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = WBSegmentControl.podspec; path = ../WBSegmentControl.podspec; sourceTree = "<group>"; };
 		42687C171D2B2BFF00398368 /* ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
-		42A7A3131D2B3F300016ACED /* WBSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBSegmentControl.swift; sourceTree = "<group>"; };
 		4B21AE8307C0C0D59B36DBF9 /* Pods-WBSegmentControl_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBSegmentControl_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WBSegmentControl_Tests/Pods-WBSegmentControl_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		512539414C6A45DC72BAB96C /* Pods_WBSegmentControl_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WBSegmentControl_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* WBSegmentControl_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WBSegmentControl_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				42A7A3131D2B3F300016ACED /* WBSegmentControl.swift */,
 				607FACD71AFB9204008FA782 /* ViewController2.swift */,
 				42687C171D2B2BFF00398368 /* ViewController1.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -172,12 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "WBSegmentControl_Example" */;
 			buildPhases = (
-				7D188ED98E8C51CAF6841E56 /* 📦 Check Pods Manifest.lock */,
+				7D188ED98E8C51CAF6841E56 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				D9D0374CD73AFB38DFD2E40C /* 📦 Embed Pods Frameworks */,
-				30F9440D43C49CBE720F5A9E /* 📦 Copy Pods Resources */,
+				D9D0374CD73AFB38DFD2E40C /* [CP] Embed Pods Frameworks */,
+				30F9440D43C49CBE720F5A9E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,12 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "WBSegmentControl_Tests" */;
 			buildPhases = (
-				EC545AC6B9F5A61DC338EA19 /* 📦 Check Pods Manifest.lock */,
+				EC545AC6B9F5A61DC338EA19 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				CEBD233C9BD72D99319629F6 /* 📦 Embed Pods Frameworks */,
-				D7A84CD2F0B3E62E7F7ED0E8 /* 📦 Copy Pods Resources */,
+				CEBD233C9BD72D99319629F6 /* [CP] Embed Pods Frameworks */,
+				D7A84CD2F0B3E62E7F7ED0E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -268,14 +265,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		30F9440D43C49CBE720F5A9E /* 📦 Copy Pods Resources */ = {
+		30F9440D43C49CBE720F5A9E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,14 +280,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WBSegmentControl_Example/Pods-WBSegmentControl_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7D188ED98E8C51CAF6841E56 /* 📦 Check Pods Manifest.lock */ = {
+		7D188ED98E8C51CAF6841E56 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,14 +295,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CEBD233C9BD72D99319629F6 /* 📦 Embed Pods Frameworks */ = {
+		CEBD233C9BD72D99319629F6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,14 +310,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WBSegmentControl_Tests/Pods-WBSegmentControl_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D7A84CD2F0B3E62E7F7ED0E8 /* 📦 Copy Pods Resources */ = {
+		D7A84CD2F0B3E62E7F7ED0E8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,14 +325,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WBSegmentControl_Tests/Pods-WBSegmentControl_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D9D0374CD73AFB38DFD2E40C /* 📦 Embed Pods Frameworks */ = {
+		D9D0374CD73AFB38DFD2E40C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,14 +340,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WBSegmentControl_Example/Pods-WBSegmentControl_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EC545AC6B9F5A61DC338EA19 /* 📦 Check Pods Manifest.lock */ = {
+		EC545AC6B9F5A61DC338EA19 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,7 +364,6 @@
 			files = (
 				42687C181D2B2BFF00398368 /* ViewController1.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController2.swift in Sources */,
-				42A7A3141D2B3F300016ACED /* WBSegmentControl.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,7 @@
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## ScreenShot
-![WBSegmentControl](ScreenShot/WBSegmentControl.png "WBSegmentControl")
+![WBSegmentControl](ScreenShot/WBSegmentControl.gif "WBSegmentControl")
 
 ## Installation
 
