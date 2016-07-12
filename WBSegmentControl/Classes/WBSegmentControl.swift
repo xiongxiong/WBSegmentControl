@@ -49,6 +49,7 @@ public class WBSegmentControl: UIControl {
     public var contentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
     public var segmentMinWidth: CGFloat = 50
     public var segmentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    public var segmentTextBold: Bool = true
     public var segmentTextFontSize: CGFloat = 12
     public var segmentTextForegroundColor: UIColor = UIColor.grayColor()
     public var segmentTextForegroundColorSelected: UIColor = UIColor.blackColor()
@@ -204,7 +205,7 @@ public class WBSegmentControl: UIControl {
             case let .Text(text):
                 let layerText = CATextLayer()
                 layerText.string = text
-                let font = UIFont.boldSystemFontOfSize(self.segmentTextFontSize)
+                let font = segmentTextBold ? UIFont.boldSystemFontOfSize(self.segmentTextFontSize) : UIFont.systemFontOfSize(self.segmentTextFontSize)
                 layerText.font = CGFontCreateWithFontName(NSString(string:font.fontName))
                 layerText.fontSize = font.pointSize
                 layerText.frame = content_frame
@@ -441,9 +442,8 @@ public class WBSegmentControl: UIControl {
         switch segment.type {
         case let .Text(text):
             size = (text as NSString).sizeWithAttributes([
-                NSFontAttributeName: UIFont.systemFontOfSize(self.segmentTextFontSize)
+                NSFontAttributeName: segmentTextBold ? UIFont.boldSystemFontOfSize(self.segmentTextFontSize) : UIFont.systemFontOfSize(self.segmentTextFontSize)
                 ])
-            size.width += CGFloat((text as NSString).length)
         case let .Icon(icon):
             size = icon.size
         }

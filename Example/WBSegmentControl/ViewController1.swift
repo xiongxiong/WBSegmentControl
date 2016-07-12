@@ -74,6 +74,7 @@ class ViewController1: UIViewController {
             WBSegmentControl.Segment(type: .Text("Headlines")),
         ]
         segmentControl.style = .Rainbow
+        segmentControl.segmentTextBold = false
         segmentControl.rainbow_colors = [UIColor(hexString: "e72f3c")!, UIColor(hexString: "ffb642")!, UIColor(hexString: "79c7f8")!]
         segmentControl.delegate = self
     }
