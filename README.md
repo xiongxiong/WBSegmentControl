@@ -39,7 +39,7 @@ segmentControl.segments = [
 ] // set segments
 segmentControl.style = .Rainbow // set style
 segmentControl.selectedIndex = 0 // set selected index, but does not trigger the delegate method
-segmentControl.updateSelectedIndex(0) // set selected index, and trigger the delegate method
+segmentControl.initialize(atIndex: 0) // set selected index, and trigger the delegate method, useful for setting the initial state
 ```
 
 ## Customize
@@ -56,7 +56,6 @@ segmentControl.updateSelectedIndex(0) // set selected index, and trigger the del
     public var enableAnimation: Bool = true
     public var animationDuration: NSTimeInterval = 0.15
     public var contentBackgroundColor: UIColor = UIColor.whiteColor()
-    public var contentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
     public var segmentMinWidth: CGFloat = 50
     public var segmentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     public var segmentTextBold: Bool = true

@@ -46,7 +46,6 @@ public class WBSegmentControl: UIControl {
     public var enableAnimation: Bool = true
     public var animationDuration: NSTimeInterval = 0.15
     public var contentBackgroundColor: UIColor = UIColor.whiteColor()
-    public var contentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
     public var segmentMinWidth: CGFloat = 50
     public var segmentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     public var segmentTextBold: Bool = true
@@ -116,10 +115,10 @@ public class WBSegmentControl: UIControl {
             let scrollView = UIScrollView()
             self.addSubview(scrollView)
             scrollView.translatesAutoresizingMaskIntoConstraints = false
-            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: self.contentEdgeInsets.top))
-            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: -1 * self.contentEdgeInsets.bottom))
-            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: self.contentEdgeInsets.left))
-            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: -1 * self.contentEdgeInsets.right))
+            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0))
+            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0))
+            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0))
+            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0))
             scrollView.showsHorizontalScrollIndicator = false
             scrollView.showsVerticalScrollIndicator = false
             scrollView.backgroundColor = self.contentBackgroundColor
@@ -344,10 +343,14 @@ public class WBSegmentControl: UIControl {
     }
     
     // MARK: Custom methods
-    public func updateSelectedIndex(index: Int) {
+    public func initialize(atIndex index: Int) {
+        delegate?.segmentControl(self, selectIndex: index, oldIndex: selectedIndex)
+        selectedIndex = index
+    }
+    
+    func updateSelectedIndex(index: Int) {
         if index != selectedIndex {
-            delegate?.segmentControl(self, selectIndex: index, oldIndex: selectedIndex)
-            selectedIndex = index
+            initialize(atIndex: index)
         }
     }
     

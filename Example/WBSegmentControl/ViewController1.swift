@@ -36,20 +36,20 @@ class ViewController1: UIViewController {
         viewPages.gestureRecognizers = pagesController.gestureRecognizers
         viewPages.snp_makeConstraints { (make) in
             make.top.equalTo(segmentControl.snp_bottom)
-            make.bottom.equalTo(self.snp_bottomLayoutGuideTop)
+            make.bottom.equalTo(view)
             make.leading.equalTo(view)
             make.trailing.equalTo(view)
         }
         
         pagesController.view.snp_makeConstraints { (make) in
-            make.edges.equalTo(viewPages).offset(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10))
+            make.edges.equalTo(viewPages)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        pagesController.setViewControllers([pages.first!], direction: .Forward, animated: true, completion: nil)
+        segmentControl.initialize(atIndex: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,6 +92,7 @@ class ViewController1: UIViewController {
     }
 
 }
+
 extension ViewController1: WBSegmentControlDelegate {
     func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int) {
         let targetPages = [pages[newIndex]]
