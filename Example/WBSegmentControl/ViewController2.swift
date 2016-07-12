@@ -38,7 +38,7 @@ class ViewController2: UIViewController {
             WBSegmentControl.Segment(type: .Text("Weather")),
             WBSegmentControl.Segment(type: .Text("Headlines")),
         ]
-        segmentCtrl_A.indicatorStyle = .Rainbow
+        segmentCtrl_A.style = .Rainbow
         segmentCtrl_A.rainbow_colors = [UIColor(hexString: "e72f3c")!, UIColor(hexString: "ffb642")!, UIColor(hexString: "79c7f8")!]
         
         let segmentCtrl_B = WBSegmentControl()
@@ -60,7 +60,7 @@ class ViewController2: UIViewController {
             WBSegmentControl.Segment(type: .Icon(UIImage(named: "8")!)),
             WBSegmentControl.Segment(type: .Icon(UIImage(named: "9")!)),
         ]
-        segmentCtrl_B.indicatorStyle = .Strip
+        segmentCtrl_B.style = .Strip
         segmentCtrl_B.rainbow_colors = [UIColor(hexString: "e72f3c")!, UIColor(hexString: "ffb642")!, UIColor(hexString: "79c7f8")!]
         segmentCtrl_B.enableSlideway = false
         segmentCtrl_B.strip_range = .Segment
@@ -87,7 +87,7 @@ class ViewController2: UIViewController {
             WBSegmentControl.Segment(type: .Text("Weather")),
             WBSegmentControl.Segment(type: .Text("Headlines")),
         ]
-        segmentCtrl_C.indicatorStyle = .Arrow
+        segmentCtrl_C.style = .Arrow
         segmentCtrl_C.enableSlideway = true
         segmentCtrl_C.enableSeparator = true
         
@@ -113,7 +113,7 @@ class ViewController2: UIViewController {
             WBSegmentControl.Segment(type: .Text("Weather")),
             WBSegmentControl.Segment(type: .Text("Headlines")),
         ]
-        segmentCtrl_D.indicatorStyle = .ArrowStrip
+        segmentCtrl_D.style = .ArrowStrip
         
         let segmentCtrl_E = WBSegmentControl()
         self.view.addSubview(segmentCtrl_E)
@@ -137,7 +137,7 @@ class ViewController2: UIViewController {
             WBSegmentControl.Segment(type: .Text("Weather")),
             WBSegmentControl.Segment(type: .Text("Headlines")),
         ]
-        segmentCtrl_E.indicatorStyle = .ArrowStrip
+        segmentCtrl_E.style = .ArrowStrip
         segmentCtrl_E.enableSlideway = false
         
         let segmentCtrl_F = WBSegmentControl()
@@ -162,7 +162,7 @@ class ViewController2: UIViewController {
             WBSegmentControl.Segment(type: .Text("Weather")),
             WBSegmentControl.Segment(type: .Text("Headlines")),
         ]
-        segmentCtrl_F.indicatorStyle = .Cover
+        segmentCtrl_F.style = .Cover
     }
 }
 

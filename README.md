@@ -22,6 +22,27 @@ pod "WBSegmentControl"
 ```
 
 ## Usage
+
+### WBSegmentControlDelegate
+```ruby
+public protocol WBSegmentControlDelegate {
+func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int)
+}
+```
+
+### How to use
+```ruby
+let segmentControl = WBSegmentControl() // initialize
+segmentControl.segments = [
+WBSegmentControl.Segment(type: .Text("A")),
+WBSegmentControl.Segment(type: .Text("B")),
+] // set segments
+segmentControl.style = .Rainbow // set style
+segmentControl.selectedIndex = 0 // set selected index, but does not trigger the delegate method
+segmentControl.updateSelectedIndex(0) // set selected index, and trigger the delegate method
+```
+
+## Customize
 ### Settings - Common
     public var indicatorStyle: IndicatorStyle = .Rainbow
     public var nonScrollDistributionStyle: NonScrollDistributionStyle = .Average

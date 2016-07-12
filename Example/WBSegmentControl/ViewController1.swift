@@ -73,7 +73,7 @@ class ViewController1: UIViewController {
             WBSegmentControl.Segment(type: .Text("Weather")),
             WBSegmentControl.Segment(type: .Text("Headlines")),
         ]
-        segmentControl.indicatorStyle = .Rainbow
+        segmentControl.style = .Rainbow
         segmentControl.rainbow_colors = [UIColor(hexString: "e72f3c")!, UIColor(hexString: "ffb642")!, UIColor(hexString: "79c7f8")!]
         segmentControl.delegate = self
     }

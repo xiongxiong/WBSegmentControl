@@ -34,7 +34,7 @@ public class WBSegmentControl: UIControl {
     }
     
     // MARK: Configuration - Appearance
-    public var indicatorStyle: IndicatorStyle = .Rainbow
+    public var style: IndicatorStyle = .Rainbow
     public var nonScrollDistributionStyle: NonScrollDistributionStyle = .Average
     public var enableSeparator: Bool = false
     public var separatorColor: UIColor = UIColor.blackColor()
@@ -104,7 +104,7 @@ public class WBSegmentControl: UIControl {
         let sum = self.segments.reduce(0, combine: { (max_x, segment) -> CGFloat in
             return max(max_x, CGRectGetMaxX(segment.segmentFrame))
         })
-        return sum + ((self.enableSeparator && self.indicatorStyle != .Rainbow) ? self.separatorWidth / 2 : 0)
+        return sum + ((self.enableSeparator && self.style != .Rainbow) ? self.separatorWidth / 2 : 0)
     }
     
     // MARK: Initialization
@@ -155,7 +155,7 @@ public class WBSegmentControl: UIControl {
             case .Average:
                 self.scrollView.contentInset = UIEdgeInsetsZero
                 self.scrollView.contentSize = self.scrollView.frame.size
-                var averageWidth: CGFloat = (self.scrollView.frame.width - (self.enableSeparator && self.indicatorStyle != .Rainbow ? CGFloat(self.segments.count) * self.separatorWidth : 0)) / CGFloat(self.segments.count)
+                var averageWidth: CGFloat = (self.scrollView.frame.width - (self.enableSeparator && self.style != .Rainbow ? CGFloat(self.segments.count) * self.separatorWidth : 0)) / CGFloat(self.segments.count)
                 let largeSegments = self.segments.filter({ (segment) -> Bool in
                     return segment.segmentWidth >= averageWidth
                 })
@@ -165,7 +165,7 @@ public class WBSegmentControl: UIControl {
                 let sumLarge = largeSegments.reduce(0, combine: { (total, segment) -> CGFloat in
                     return total + segment.segmentWidth
                 })
-                averageWidth = (self.scrollView.frame.width - (self.enableSeparator && self.indicatorStyle != .Rainbow ? CGFloat(self.segments.count) * self.separatorWidth : 0) - sumLarge) / CGFloat(smallSegments.count)
+                averageWidth = (self.scrollView.frame.width - (self.enableSeparator && self.style != .Rainbow ? CGFloat(self.segments.count) * self.separatorWidth : 0) - sumLarge) / CGFloat(smallSegments.count)
                 for segment in smallSegments {
                     segment.segmentWidth = averageWidth
                 }
@@ -185,7 +185,7 @@ public class WBSegmentControl: UIControl {
             let content_frame = CGRectMake(content_x, content_y, segment.contentSize.width, segment.contentSize.height)
             
             // Add Decoration Layer
-            switch self.indicatorStyle {
+            switch self.style {
             case .Rainbow:
                 let layerStrip = CALayer()
                 layerStrip.frame = CGRectMake(segment.segmentFrame.origin.x, index == self.selectedIndex ? 0 : segment.segmentFrame.height - self.rainbow_height, segment.segmentFrame.width, index == self.selectedIndex ? self.scrollView.frame.height : self.rainbow_height)
@@ -303,7 +303,7 @@ public class WBSegmentControl: UIControl {
             self.scrollView.layer.addSublayer(layerArrow)
             self.layerArrow = layerArrow
         }
-        switch self.indicatorStyle {
+        switch self.style {
         case .Cover:
             addLayerCover()
             self.enableSeparator ? addLayerSeparator() : ()
@@ -343,7 +343,7 @@ public class WBSegmentControl: UIControl {
     }
     
     // MARK: Custom methods
-    func updateSelectedIndex(index: Int) {
+    public func updateSelectedIndex(index: Int) {
         if index != selectedIndex {
             delegate?.segmentControl(self, selectIndex: index, oldIndex: selectedIndex)
             selectedIndex = index
@@ -356,7 +356,7 @@ public class WBSegmentControl: UIControl {
             CATransaction.setAnimationDuration(self.animationDuration)
             CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear))
             CATransaction.setCompletionBlock({ [unowned self] in
-                switch self.indicatorStyle {
+                switch self.style {
                 case .Rainbow:
                     self.switchRoundCornerForLayer(self.segments[oldIndex].layerStrip!, isRoundCorner: false)
                 default:
@@ -374,7 +374,7 @@ public class WBSegmentControl: UIControl {
     }
     
     func didSelectedIndexChanged(newIndex: Int, oldIndex: Int) {
-        switch indicatorStyle {
+        switch style {
         case .Cover:
             self.layerCover.actions = nil
             self.layerCover.frame = self.indicatorCoverFrame(newIndex)
@@ -451,12 +451,12 @@ public class WBSegmentControl: UIControl {
     }
     
     func segmentFrame(index: Int) -> CGRect {
-        var segmentOffset: CGFloat = (self.enableSeparator && self.indicatorStyle != .Rainbow ? self.separatorWidth / 2 : 0)
+        var segmentOffset: CGFloat = (self.enableSeparator && self.style != .Rainbow ? self.separatorWidth / 2 : 0)
         for (idx, segment) in self.segments.enumerate() {
             if idx == index {
                 break
             } else {
-                segmentOffset += segment.segmentWidth + (self.enableSeparator && self.indicatorStyle != .Rainbow ? self.separatorWidth : 0)
+                segmentOffset += segment.segmentWidth + (self.enableSeparator && self.style != .Rainbow ? self.separatorWidth : 0)
             }
         }
         return CGRectMake(segmentOffset , 0, self.segments[index].segmentWidth, self.scrollView.frame.height)
@@ -511,7 +511,7 @@ public class WBSegmentControl: UIControl {
         var touch_offset_x = location.x + self.scrollView.contentOffset.x
         var touch_index = 0
         for (index, segment) in self.segments.enumerate() {
-            touch_offset_x -= segment.segmentWidth + (self.enableSeparator && self.indicatorStyle != .Rainbow ? self.separatorWidth : 0)
+            touch_offset_x -= segment.segmentWidth + (self.enableSeparator && self.style != .Rainbow ? self.separatorWidth : 0)
             if touch_offset_x < 0 {
                 touch_index = index
                 break
