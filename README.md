@@ -17,30 +17,74 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 WBSegmentControl is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-```ruby
+`
 pod "WBSegmentControl"
-```
+`
 
-## Usage
+## Protocols
 
+`
 ### WBSegmentControlDelegate
-```ruby
 public protocol WBSegmentControlDelegate {
     func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int)
 }
-```
 
-### How to use
-```ruby
+### WBSegmentProtocol
+public protocol WBSegmentContentProtocol {
+    var type: WBSegmentType { get }
+}
+`
+
+## Usage
+
+### Implement WBSegmentContentProtocol
+
+`
+class TextSegment: NSObject, WBSegmentContentProtocol {
+
+    var text: String!
+
+    var type: WBSegmentType {
+        return WBSegmentType.Text(text)
+    }
+
+    init(text: String) {
+        super.init()
+
+        self.text = text
+    }
+}
+`
+
+### Initialize segmentControl
+
+`
 let segmentControl = WBSegmentControl() // initialize
+view.addSubview(segmentControl)
+...
 segmentControl.segments = [
-    WBSegmentControl.Segment(type: .Text("A")),
-    WBSegmentControl.Segment(type: .Text("B")),
+    TextSegment(text: "News China"),
+    TextSegment(text: "Breaking News"),
 ] // set segments
 segmentControl.style = .Rainbow // set style
-segmentControl.selectedIndex = 0 // set selected index, but does not trigger the delegate method
-segmentControl.initialize(atIndex: 0) // set selected index, and trigger the delegate method, useful for setting the initial state
-```
+segmentControl.selectedIndex = 0 // set selected index
+`
+
+### Implement WBSegmentControlDelegate
+
+`extension MyViewController: WBSegmentControlDelegate {
+    func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int) {
+    ...
+    }
+}
+`
+
+### Get selected segment
+
+`
+let selectedIndex = segmentControl.selectedIndex
+let selectedSegment: TextSegment? = segmentControl.selectedSegment as? TextSegment
+`
 
 ## Customize
 ### Settings - Common

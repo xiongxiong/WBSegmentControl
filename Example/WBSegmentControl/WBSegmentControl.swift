@@ -10,7 +10,6 @@ import UIKit
 
 // MARK: WBSegmentControlDelegate
 public protocol WBSegmentControlDelegate {
-    
     func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int)
 }
 
