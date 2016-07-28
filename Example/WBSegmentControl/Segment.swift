@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WBSegmentControl
 
 class TextSegment: NSObject, WBSegmentContentProtocol {
 

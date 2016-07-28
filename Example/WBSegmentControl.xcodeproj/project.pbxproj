@@ -175,7 +175,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "WBSegmentControl_Example" */;
 			buildPhases = (
-				C051B093FFAD2F4698DBE578 /* 📦 Check Pods Manifest.lock */,
+				C051B093FFAD2F4698DBE578 /* [CP] Check Pods Manifest.lock */,
 				7D188ED98E8C51CAF6841E56 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
@@ -198,7 +198,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "WBSegmentControl_Tests" */;
 			buildPhases = (
-				B8410F4445155EE83662E4CE /* 📦 Check Pods Manifest.lock */,
+				B8410F4445155EE83662E4CE /* [CP] Check Pods Manifest.lock */,
 				EC545AC6B9F5A61DC338EA19 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
@@ -352,14 +352,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WBSegmentControl_Example/Pods-WBSegmentControl_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B8410F4445155EE83662E4CE /* 📦 Check Pods Manifest.lock */ = {
+		B8410F4445155EE83662E4CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,14 +382,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WBSegmentControl_Tests/Pods-WBSegmentControl_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C051B093FFAD2F4698DBE578 /* 📦 Check Pods Manifest.lock */ = {
+		C051B093FFAD2F4698DBE578 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

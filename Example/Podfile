@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'WBSegmentControl_Example' do
-  pod 'WBSegmentControl', :path => '../'
+#  pod 'WBSegmentControl', :path => '../'
   pod 'SnapKit'
   pod 'SwiftHEXColors'
   

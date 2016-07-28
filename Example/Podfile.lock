@@ -27,7 +27,7 @@ EXTERNAL SOURCES:
   FBSnapshotTestCase:
     :git: https://github.com/facebook/ios-snapshot-test-case.git
   WBSegmentControl:
-    :path: "../"
+    :path: ../
 
 CHECKOUT OPTIONS:
   FBSnapshotTestCase:
@@ -45,4 +45,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c28e3ddd091c16f5a0d914544afad153f334245c
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1
