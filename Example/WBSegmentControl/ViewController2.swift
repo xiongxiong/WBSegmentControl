@@ -13,10 +13,16 @@ import SwiftHEXColors
 
 class ViewController2: UIViewController {
     
+    let segmentCtrl_A = WBSegmentControl()
+    let segmentCtrl_B = WBSegmentControl()
+    let segmentCtrl_C = WBSegmentControl()
+    let segmentCtrl_D = WBSegmentControl()
+    let segmentCtrl_E = WBSegmentControl()
+    let segmentCtrl_F = WBSegmentControl()
+    
     override func loadView() {
         super.loadView()
         
-        let segmentCtrl_A = WBSegmentControl()
         self.view.addSubview(segmentCtrl_A)
         segmentCtrl_A.snp_makeConstraints { (make) in
             make.leading.equalTo(self.view)
@@ -25,23 +31,22 @@ class ViewController2: UIViewController {
             make.height.equalTo(40)
         }
         segmentCtrl_A.segments = [
-            WBSegmentControl.Segment(type: .Text("News China")),
-            WBSegmentControl.Segment(type: .Text("Breaking News")),
-            WBSegmentControl.Segment(type: .Text("World")),
-            WBSegmentControl.Segment(type: .Text("Science")),
-            WBSegmentControl.Segment(type: .Text("Entertainment & Arts")),
-            WBSegmentControl.Segment(type: .Text("Finance")),
-            WBSegmentControl.Segment(type: .Text("Video")),
-            WBSegmentControl.Segment(type: .Text("Radio")),
-            WBSegmentControl.Segment(type: .Text("Education")),
-            WBSegmentControl.Segment(type: .Text("Sports")),
-            WBSegmentControl.Segment(type: .Text("Weather")),
-            WBSegmentControl.Segment(type: .Text("Headlines")),
+            TextSegment(text: "News China"),
+            TextSegment(text: "Breaking News"),
+            TextSegment(text: "World"),
+            TextSegment(text: "Science"),
+            TextSegment(text: "Entertainment & Arts"),
+            TextSegment(text: "Finance"),
+            TextSegment(text: "Video"),
+            TextSegment(text: "Radio"),
+            TextSegment(text: "Education"),
+            TextSegment(text: "Sports"),
+            TextSegment(text: "Weather"),
+            TextSegment(text: "Headlines"),
         ]
         segmentCtrl_A.style = .Rainbow
         segmentCtrl_A.rainbow_colors = [UIColor(hexString: "e72f3c")!, UIColor(hexString: "ffb642")!, UIColor(hexString: "79c7f8")!]
         
-        let segmentCtrl_B = WBSegmentControl()
         self.view.addSubview(segmentCtrl_B)
         segmentCtrl_B.snp_makeConstraints { (make) in
             make.leading.equalTo(self.view)
@@ -50,22 +55,21 @@ class ViewController2: UIViewController {
             make.height.equalTo(40)
         }
         segmentCtrl_B.segments = [
-            WBSegmentControl.Segment(type: .Icon(UIImage(named: "1")!)),
-            WBSegmentControl.Segment(type: .Icon(UIImage(named: "2")!)),
-            WBSegmentControl.Segment(type: .Icon(UIImage(named: "3")!)),
-            WBSegmentControl.Segment(type: .Icon(UIImage(named: "4")!)),
-            WBSegmentControl.Segment(type: .Icon(UIImage(named: "5")!)),
-            WBSegmentControl.Segment(type: .Icon(UIImage(named: "6")!)),
-            WBSegmentControl.Segment(type: .Icon(UIImage(named: "7")!)),
-            WBSegmentControl.Segment(type: .Icon(UIImage(named: "8")!)),
-            WBSegmentControl.Segment(type: .Icon(UIImage(named: "9")!)),
+            IconSegment(icon: UIImage(named: "1")!),
+            IconSegment(icon: UIImage(named: "2")!),
+            IconSegment(icon: UIImage(named: "3")!),
+            IconSegment(icon: UIImage(named: "4")!),
+            IconSegment(icon: UIImage(named: "5")!),
+            IconSegment(icon: UIImage(named: "6")!),
+            IconSegment(icon: UIImage(named: "7")!),
+            IconSegment(icon: UIImage(named: "8")!),
+            IconSegment(icon: UIImage(named: "9")!),
         ]
         segmentCtrl_B.style = .Strip
         segmentCtrl_B.rainbow_colors = [UIColor(hexString: "e72f3c")!, UIColor(hexString: "ffb642")!, UIColor(hexString: "79c7f8")!]
         segmentCtrl_B.enableSlideway = false
         segmentCtrl_B.strip_range = .Segment
         
-        let segmentCtrl_C = WBSegmentControl()
         self.view.addSubview(segmentCtrl_C)
         segmentCtrl_C.snp_makeConstraints { (make) in
             make.leading.equalTo(self.view)
@@ -74,24 +78,23 @@ class ViewController2: UIViewController {
             make.height.equalTo(40)
         }
         segmentCtrl_C.segments = [
-            WBSegmentControl.Segment(type: .Text("News China")),
-            WBSegmentControl.Segment(type: .Text("Breaking News")),
-            WBSegmentControl.Segment(type: .Text("World")),
-            WBSegmentControl.Segment(type: .Text("Science")),
-            WBSegmentControl.Segment(type: .Text("Entertainment & Arts")),
-            WBSegmentControl.Segment(type: .Text("Finance")),
-            WBSegmentControl.Segment(type: .Text("Video")),
-            WBSegmentControl.Segment(type: .Text("Radio")),
-            WBSegmentControl.Segment(type: .Text("Education")),
-            WBSegmentControl.Segment(type: .Text("Sports")),
-            WBSegmentControl.Segment(type: .Text("Weather")),
-            WBSegmentControl.Segment(type: .Text("Headlines")),
+            TextSegment(text: "News China"),
+            TextSegment(text: "Breaking News"),
+            TextSegment(text: "World"),
+            TextSegment(text: "Science"),
+            TextSegment(text: "Entertainment & Arts"),
+            TextSegment(text: "Finance"),
+            TextSegment(text: "Video"),
+            TextSegment(text: "Radio"),
+            TextSegment(text: "Education"),
+            TextSegment(text: "Sports"),
+            TextSegment(text: "Weather"),
+            TextSegment(text: "Headlines"),
         ]
         segmentCtrl_C.style = .Arrow
         segmentCtrl_C.enableSlideway = true
         segmentCtrl_C.enableSeparator = true
         
-        let segmentCtrl_D = WBSegmentControl()
         self.view.addSubview(segmentCtrl_D)
         segmentCtrl_D.snp_makeConstraints { (make) in
             make.leading.equalTo(self.view)
@@ -100,22 +103,21 @@ class ViewController2: UIViewController {
             make.height.equalTo(40)
         }
         segmentCtrl_D.segments = [
-            WBSegmentControl.Segment(type: .Text("News China")),
-            WBSegmentControl.Segment(type: .Text("Breaking News")),
-            WBSegmentControl.Segment(type: .Text("World")),
-            WBSegmentControl.Segment(type: .Text("Science")),
-            WBSegmentControl.Segment(type: .Text("Entertainment & Arts")),
-            WBSegmentControl.Segment(type: .Text("Finance")),
-            WBSegmentControl.Segment(type: .Text("Video")),
-            WBSegmentControl.Segment(type: .Text("Radio")),
-            WBSegmentControl.Segment(type: .Text("Education")),
-            WBSegmentControl.Segment(type: .Text("Sports")),
-            WBSegmentControl.Segment(type: .Text("Weather")),
-            WBSegmentControl.Segment(type: .Text("Headlines")),
+            TextSegment(text: "News China"),
+            TextSegment(text: "Breaking News"),
+            TextSegment(text: "World"),
+            TextSegment(text: "Science"),
+            TextSegment(text: "Entertainment & Arts"),
+            TextSegment(text: "Finance"),
+            TextSegment(text: "Video"),
+            TextSegment(text: "Radio"),
+            TextSegment(text: "Education"),
+            TextSegment(text: "Sports"),
+            TextSegment(text: "Weather"),
+            TextSegment(text: "Headlines"),
         ]
         segmentCtrl_D.style = .ArrowStrip
         
-        let segmentCtrl_E = WBSegmentControl()
         self.view.addSubview(segmentCtrl_E)
         segmentCtrl_E.snp_makeConstraints { (make) in
             make.leading.equalTo(self.view)
@@ -124,23 +126,22 @@ class ViewController2: UIViewController {
             make.height.equalTo(40)
         }
         segmentCtrl_E.segments = [
-            WBSegmentControl.Segment(type: .Text("News China")),
-            WBSegmentControl.Segment(type: .Text("Breaking News")),
-            WBSegmentControl.Segment(type: .Text("World")),
-            WBSegmentControl.Segment(type: .Text("Science")),
-            WBSegmentControl.Segment(type: .Text("Entertainment & Arts")),
-            WBSegmentControl.Segment(type: .Text("Finance")),
-            WBSegmentControl.Segment(type: .Text("Video")),
-            WBSegmentControl.Segment(type: .Text("Radio")),
-            WBSegmentControl.Segment(type: .Text("Education")),
-            WBSegmentControl.Segment(type: .Text("Sports")),
-            WBSegmentControl.Segment(type: .Text("Weather")),
-            WBSegmentControl.Segment(type: .Text("Headlines")),
+            TextSegment(text: "News China"),
+            TextSegment(text: "Breaking News"),
+            TextSegment(text: "World"),
+            TextSegment(text: "Science"),
+            TextSegment(text: "Entertainment & Arts"),
+            TextSegment(text: "Finance"),
+            TextSegment(text: "Video"),
+            TextSegment(text: "Radio"),
+            TextSegment(text: "Education"),
+            TextSegment(text: "Sports"),
+            TextSegment(text: "Weather"),
+            TextSegment(text: "Headlines"),
         ]
         segmentCtrl_E.style = .ArrowStrip
         segmentCtrl_E.enableSlideway = false
         
-        let segmentCtrl_F = WBSegmentControl()
         self.view.addSubview(segmentCtrl_F)
         segmentCtrl_F.snp_makeConstraints { (make) in
             make.leading.equalTo(self.view)
@@ -149,20 +150,37 @@ class ViewController2: UIViewController {
             make.height.equalTo(40)
         }
         segmentCtrl_F.segments = [
-            WBSegmentControl.Segment(type: .Text("News China")),
-            WBSegmentControl.Segment(type: .Text("Breaking News")),
-            WBSegmentControl.Segment(type: .Text("World")),
-            WBSegmentControl.Segment(type: .Text("Science")),
-            WBSegmentControl.Segment(type: .Text("Entertainment & Arts")),
-            WBSegmentControl.Segment(type: .Text("Finance")),
-            WBSegmentControl.Segment(type: .Text("Video")),
-            WBSegmentControl.Segment(type: .Text("Radio")),
-            WBSegmentControl.Segment(type: .Text("Education")),
-            WBSegmentControl.Segment(type: .Text("Sports")),
-            WBSegmentControl.Segment(type: .Text("Weather")),
-            WBSegmentControl.Segment(type: .Text("Headlines")),
+            TextSegment(text: "News China"),
+            TextSegment(text: "Breaking News"),
+            TextSegment(text: "World"),
+            TextSegment(text: "Science"),
+            TextSegment(text: "Entertainment & Arts"),
+            TextSegment(text: "Finance"),
+            TextSegment(text: "Video"),
+            TextSegment(text: "Radio"),
+            TextSegment(text: "Education"),
+            TextSegment(text: "Sports"),
+            TextSegment(text: "Weather"),
+            TextSegment(text: "Headlines"),
         ]
         segmentCtrl_F.style = .Cover
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        segmentCtrl_A.selectedIndex = 0
+        segmentCtrl_B.selectedIndex = 0
+        segmentCtrl_C.selectedIndex = 0
+        segmentCtrl_D.selectedIndex = 0
+        segmentCtrl_E.selectedIndex = 0
+        segmentCtrl_F.selectedIndex = 0
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
     }
 }
 

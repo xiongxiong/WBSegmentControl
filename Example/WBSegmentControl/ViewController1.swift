@@ -13,6 +13,7 @@ class ViewController1: UIViewController {
 
     var segmentControl: WBSegmentControl!
     var viewPages = UIView()
+    var viewLabel = UILabel()
     var pagesController: UIPageViewController!
     var pages: [UIViewController] = []
     
@@ -25,6 +26,7 @@ class ViewController1: UIViewController {
         view.addSubview(segmentControl)
         view.addSubview(viewPages)
         viewPages.addSubview(pagesController.view)
+        view.addSubview(viewLabel)
         
         segmentControl.snp_makeConstraints { (make) in
             make.top.equalTo(self.snp_topLayoutGuideBottom)
@@ -36,7 +38,7 @@ class ViewController1: UIViewController {
         viewPages.gestureRecognizers = pagesController.gestureRecognizers
         viewPages.snp_makeConstraints { (make) in
             make.top.equalTo(segmentControl.snp_bottom)
-            make.bottom.equalTo(view)
+            make.bottom.equalTo(viewLabel)
             make.leading.equalTo(view)
             make.trailing.equalTo(view)
         }
@@ -44,12 +46,22 @@ class ViewController1: UIViewController {
         pagesController.view.snp_makeConstraints { (make) in
             make.edges.equalTo(viewPages)
         }
+        
+        viewLabel.snp_makeConstraints { (make) in
+            make.bottom.equalTo(self.snp_bottomLayoutGuideTop)
+            make.height.equalTo(40)
+            make.leading.equalTo(view)
+            make.trailing.equalTo(view)
+        }
+        viewLabel.textAlignment = .Center
+        viewLabel.textColor = UIColor.blackColor()
+        viewLabel.backgroundColor = UIColor.whiteColor()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        segmentControl.initialize(atIndex: 0)
+        segmentControl.selectedIndex = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,18 +72,18 @@ class ViewController1: UIViewController {
     func initSegmentControl() {
         segmentControl = WBSegmentControl()
         segmentControl.segments = [
-            WBSegmentControl.Segment(type: .Text("News China")),
-            WBSegmentControl.Segment(type: .Text("Breaking News")),
-            WBSegmentControl.Segment(type: .Text("World")),
-            WBSegmentControl.Segment(type: .Text("Science")),
-            WBSegmentControl.Segment(type: .Text("Entertainment & Arts")),
-            WBSegmentControl.Segment(type: .Text("Finance")),
-            WBSegmentControl.Segment(type: .Text("Video")),
-            WBSegmentControl.Segment(type: .Text("Radio")),
-            WBSegmentControl.Segment(type: .Text("Education")),
-            WBSegmentControl.Segment(type: .Text("Sports")),
-            WBSegmentControl.Segment(type: .Text("Weather")),
-            WBSegmentControl.Segment(type: .Text("Headlines")),
+            TextSegment(text: "News China", otherAttr: "News China"),
+            TextSegment(text: "Breaking News", otherAttr: "Breaking News"),
+            TextSegment(text: "World", otherAttr: "World"),
+            TextSegment(text: "Science", otherAttr: "Science"),
+            TextSegment(text: "Entertainment & Arts", otherAttr: "Entertainment & Arts"),
+            TextSegment(text: "Finance", otherAttr: "Finance"),
+            TextSegment(text: "Video", otherAttr: "Video"),
+            TextSegment(text: "Radio", otherAttr: "Radio"),
+            TextSegment(text: "Education", otherAttr: "Education"),
+            TextSegment(text: "Sports", otherAttr: "Sports"),
+            TextSegment(text: "Weather", otherAttr: "Weather"),
+            TextSegment(text: "Headlines", otherAttr: "Headlines"),
         ]
         segmentControl.style = .Rainbow
         segmentControl.segmentTextBold = false
@@ -98,6 +110,10 @@ extension ViewController1: WBSegmentControlDelegate {
         let targetPages = [pages[newIndex]]
         let direction = ((newIndex > oldIndex) ? UIPageViewControllerNavigationDirection.Forward : UIPageViewControllerNavigationDirection.Reverse)
         pagesController.setViewControllers(targetPages, direction: direction, animated: true, completion: nil)
+        
+        if let selectedSegment = segmentControl.selectedSegment as? TextSegment {
+            viewLabel.text = selectedSegment.otherAttr
+        }
     }
 }
 
