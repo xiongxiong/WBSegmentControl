@@ -7,7 +7,10 @@
 //
 
 import UIKit
+
+#if RELEASE
 import WBSegmentControl
+#endif
 
 class ViewController1: UIViewController {
 

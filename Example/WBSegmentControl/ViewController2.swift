@@ -7,9 +7,12 @@
 //
 
 import UIKit
-import WBSegmentControl
 import SnapKit
 import SwiftHEXColors
+
+#if RELEASE
+import WBSegmentControl
+#endif
 
 class ViewController2: UIViewController {
     

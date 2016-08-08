@@ -13,6 +13,11 @@ public protocol WBSegmentControlDelegate {
     func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int)
 }
 
+// MARK: WBInnerSegmentDelegate
+protocol WBInnerSegmentDelegate {
+    func didSelect(location: CGPoint)
+}
+
 // MARK: WBSegmentControl
 public class WBSegmentControl: UIControl {
     
@@ -20,7 +25,9 @@ public class WBSegmentControl: UIControl {
     public var segments: [WBSegmentContentProtocol] = [] {
         didSet {
             innerSegments = segments.map({ (content) -> WBInnerSegment in
-                return WBInnerSegment(content: content)
+                let innerSegment = WBInnerSegment(content: content)
+                innerSegment.delegate = self
+                return innerSegment
             })
             self.setNeedsLayout()
             if segments.count == 0 {
@@ -145,6 +152,9 @@ public class WBSegmentControl: UIControl {
     override public func layoutSubviews() {
         super.layoutSubviews()
         self.scrollView.layer.sublayers?.removeAll()
+        self.scrollView.subviews.forEach { (view) in
+            view.removeFromSuperview()
+        }
         
         // Compute Segment Size
         for (index, segment) in self.innerSegments.enumerate() {
@@ -189,7 +199,13 @@ public class WBSegmentControl: UIControl {
             self.scrollView.contentInset = UIEdgeInsetsZero
         }
         
-        // Add Content Layer
+        // Create Segment Views
+        innerSegments.forEach { (segment) in
+            scrollView.addSubview(segment)
+            segment.frame = segment.segmentFrame
+        }
+        
+        // Add Segment SubLayers
         for (index, segment) in self.innerSegments.enumerate() {
             let content_x = segment.segmentFrame.origin.x + (segment.segmentFrame.width - segment.contentSize.width) / 2
             let content_y = (self.scrollView.frame.height - segment.contentSize.height) / 2
@@ -211,7 +227,7 @@ public class WBSegmentControl: UIControl {
             }
             
             // Add Content Layer
-            switch segment.segmentContent.type {
+            switch segment.content.type {
             case let .Text(text):
                 let layerText = CATextLayer()
                 layerText.string = text
@@ -341,12 +357,6 @@ public class WBSegmentControl: UIControl {
         }
     }
     
-    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if let touch = touches.first {
-            selectedIndex = self.indexForTouch(touch.locationInView(self))
-        }
-    }
-    
     // MARK: Custom methods
     func selectedIndexChanged(newIndex: Int, oldIndex: Int) {
         if self.enableAnimation && validIndex(oldIndex) {
@@ -402,7 +412,7 @@ public class WBSegmentControl: UIControl {
         }
         
         if validIndex(oldIndex) {
-            switch self.innerSegments[oldIndex].segmentContent.type {
+            switch self.innerSegments[oldIndex].content.type {
             case .Text:
                 if let old_contentLayer = self.innerSegments[oldIndex].layerText as? CATextLayer {
                     old_contentLayer.foregroundColor = self.segmentTextForegroundColor.CGColor
@@ -411,7 +421,7 @@ public class WBSegmentControl: UIControl {
                 break
             }
         }
-        switch self.innerSegments[newIndex].segmentContent.type {
+        switch self.innerSegments[newIndex].content.type {
         case .Text:
             if let new_contentLayer = self.innerSegments[newIndex].layerText as? CATextLayer {
                 new_contentLayer.foregroundColor = self.segmentTextForegroundColorSelected.CGColor
@@ -440,7 +450,7 @@ public class WBSegmentControl: UIControl {
     
     func segmentContentSize(segment: WBInnerSegment) -> CGSize {
         var size = CGSizeZero
-        switch segment.segmentContent.type {
+        switch segment.content.type {
         case let .Text(text):
             size = (text as NSString).sizeWithAttributes([
                 NSFontAttributeName: segmentTextBold ? UIFont.boldSystemFontOfSize(self.segmentTextFontSize) : UIFont.systemFontOfSize(self.segmentTextFontSize)
@@ -521,7 +531,7 @@ public class WBSegmentControl: UIControl {
     }
     
     func indexForTouch(location: CGPoint) -> Int {
-        var touch_offset_x = location.x + self.scrollView.contentOffset.x
+        var touch_offset_x = location.x
         var touch_index = 0
         for (index, segment) in self.innerSegments.enumerate() {
             touch_offset_x -= segment.segmentWidth + (self.enableSeparator && self.style != .Rainbow ? self.separatorWidth : 0)
@@ -538,25 +548,43 @@ public class WBSegmentControl: UIControl {
     }
 }
 
+extension WBSegmentControl: WBInnerSegmentDelegate {
+    func didSelect(location: CGPoint) {
+        selectedIndex = indexForTouch(location)
+    }
+}
+
 public protocol WBSegmentContentProtocol {
     
     var type: WBSegmentType { get }
 }
 
-class WBInnerSegment {
+class WBInnerSegment: UIView {
     
-    let segmentContent: WBSegmentContentProtocol
-    
-    var layerText: CALayer?
-    var layerIcon: CALayer?
-    var layerStrip: CALayer?
+    let content: WBSegmentContentProtocol
+    var delegate: WBInnerSegmentDelegate?
     
     var segmentFrame: CGRect = CGRectZero
     var segmentWidth: CGFloat = 0
     var contentSize: CGSize = CGSizeZero
     
+    var layerText: CALayer!
+    var layerIcon: CALayer!
+    var layerStrip: CALayer!
+    
     init(content: WBSegmentContentProtocol) {
-        self.segmentContent = content
+        self.content = content
+        super.init(frame: CGRectZero)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesEnded(touches, withEvent: event)
+        
+        delegate?.didSelect(center)
     }
 }
 
@@ -579,31 +607,4 @@ public enum WBSegmentIndicatorRange {
 
 public enum WBSegmentNonScrollDistributionStyle {
     case Center, Left, Right, Average
-}
-
-extension UIScrollView {
-    
-    public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if self.dragging == true {
-            super.touchesBegan(touches, withEvent: event)
-        } else {
-            self.nextResponder()?.touchesBegan(touches, withEvent: event)
-        }
-    }
-    
-    public override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if self.dragging == true {
-            super.touchesMoved(touches, withEvent: event)
-        } else {
-            self.nextResponder()?.touchesMoved(touches, withEvent: event)
-        }
-    }
-    
-    public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if self.dragging == true {
-            super.touchesEnded(touches, withEvent: event)
-        } else {
-            self.nextResponder()?.touchesEnded(touches, withEvent: event)
-        }
-    }
 }

@@ -17,13 +17,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 WBSegmentControl is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-`
 pod "WBSegmentControl"
-`
 
 ## Protocols
 
-`
 ### WBSegmentControlDelegate
 public protocol WBSegmentControlDelegate {
     func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int)
@@ -33,13 +30,11 @@ public protocol WBSegmentControlDelegate {
 public protocol WBSegmentContentProtocol {
     var type: WBSegmentType { get }
 }
-`
 
 ## Usage
 
 ### Implement WBSegmentContentProtocol
 
-`
 class TextSegment: NSObject, WBSegmentContentProtocol {
 
     var text: String!
@@ -54,11 +49,9 @@ class TextSegment: NSObject, WBSegmentContentProtocol {
         self.text = text
     }
 }
-`
 
 ### Initialize segmentControl
 
-`
 let segmentControl = WBSegmentControl() // initialize
 view.addSubview(segmentControl)
 ...
@@ -68,25 +61,22 @@ segmentControl.segments = [
 ] // set segments
 segmentControl.style = .Rainbow // set style
 segmentControl.selectedIndex = 0 // set selected index
-`
 
 ### Implement WBSegmentControlDelegate
 
-`extension MyViewController: WBSegmentControlDelegate {
+extension MyViewController: WBSegmentControlDelegate {
     func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int) {
     ...
     }
 }
-`
 
 ### Get selected segment
 
-`
 let selectedIndex = segmentControl.selectedIndex
 let selectedSegment: TextSegment? = segmentControl.selectedSegment as? TextSegment
-`
 
 ## Customize
+
 ### Settings - Common
     public var indicatorStyle: IndicatorStyle = .Rainbow
     public var nonScrollDistributionStyle: NonScrollDistributionStyle = .Average
@@ -106,18 +96,18 @@ let selectedSegment: TextSegment? = segmentControl.selectedSegment as? TextSegme
     public var segmentTextFontSize: CGFloat = 12
     public var segmentTextForegroundColor: UIColor = UIColor.grayColor()
     public var segmentTextForegroundColorSelected: UIColor = UIColor.blackColor()
-    
+
 ### Settings - indicatorStyle == .Cover
     public var cover_range: CoverRange = .Segment
     public var cover_opacity: Float = 0.2
     public var cover_color: UIColor = UIColor.blackColor()
-    
+  
 ### Settings - indicatorStyle == .Strip
     public var strip_range: StripRange = .Content
     public var strip_location: StripLocation = .Down
     public var strip_color: UIColor = UIColor.orangeColor()
     public var strip_height: CGFloat = 3
-    
+  
 ### Settings - indicatorStyle == .Rainbow
     public var rainbow_colors: [UIColor] = []
     public var rainbow_height: CGFloat = 3
@@ -129,7 +119,7 @@ let selectedSegment: TextSegment? = segmentControl.selectedSegment as? TextSegme
     public var arrow_size: CGSize = CGSizeMake(6, 6)
     public var arrow_location: ArrowLocation = .Down
     public var arrow_color: UIColor = UIColor.orangeColor()
-    
+   
 ### Settings - indicatorStyle == .ArrowStrip
     public var arrowStrip_location: ArrowStripLocation = .Up
     public var arrowStrip_color: UIColor = UIColor.orangeColor()
