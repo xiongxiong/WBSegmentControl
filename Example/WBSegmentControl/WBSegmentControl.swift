@@ -13,9 +13,9 @@
 //    func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int)
 //}
 //
-//// MARK: WBInnerSegmentDelegate
-//protocol WBInnerSegmentDelegate {
-//    func didSelect(location: CGPoint)
+//// MARK: WBTouchViewDelegate
+//public protocol WBTouchViewDelegate {
+//    func didTouch(location: CGPoint)
 //}
 //
 //// MARK: WBSegmentControl
@@ -25,9 +25,7 @@
 //    public var segments: [WBSegmentContentProtocol] = [] {
 //        didSet {
 //            innerSegments = segments.map({ (content) -> WBInnerSegment in
-//                let innerSegment = WBInnerSegment(content: content)
-//                innerSegment.delegate = self
-//                return innerSegment
+//                return WBInnerSegment(content: content)
 //            })
 //            self.setNeedsLayout()
 //            if segments.count == 0 {
@@ -115,6 +113,7 @@
 //    
 //    // MARK: Inner properties
 //    private var scrollView: UIScrollView!
+//    private var touchView: WBTouchView = WBTouchView()
 //    private var layerCover: CALayer = CALayer()
 //    private var layerStrip: CALayer = CALayer()
 //    private var layerArrow: CALayer = CALayer()
@@ -129,19 +128,16 @@
 //    override init(frame: CGRect) {
 //        super.init(frame: frame)
 //        
-//        self.scrollView = { [unowned self] in
-//            let scrollView = UIScrollView()
-//            self.addSubview(scrollView)
-//            scrollView.translatesAutoresizingMaskIntoConstraints = false
-//            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0))
-//            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0))
-//            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0))
-//            self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0))
-//            scrollView.showsHorizontalScrollIndicator = false
-//            scrollView.showsVerticalScrollIndicator = false
-//            scrollView.backgroundColor = self.contentBackgroundColor
-//            return scrollView
-//            }()
+//        scrollView = UIScrollView()
+//        self.addSubview(scrollView)
+//        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0))
+//        self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0))
+//        self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0))
+//        self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0))
+//        scrollView.showsHorizontalScrollIndicator = false
+//        scrollView.showsVerticalScrollIndicator = false
+//        scrollView.backgroundColor = self.contentBackgroundColor
 //    }
 //    
 //    required public init?(coder aDecoder: NSCoder) {
@@ -152,9 +148,6 @@
 //    override public func layoutSubviews() {
 //        super.layoutSubviews()
 //        self.scrollView.layer.sublayers?.removeAll()
-//        self.scrollView.subviews.forEach { (view) in
-//            view.removeFromSuperview()
-//        }
 //        
 //        // Compute Segment Size
 //        for (index, segment) in self.innerSegments.enumerate() {
@@ -199,11 +192,11 @@
 //            self.scrollView.contentInset = UIEdgeInsetsZero
 //        }
 //        
-//        // Create Segment Views
-//        innerSegments.forEach { (segment) in
-//            scrollView.addSubview(segment)
-//            segment.frame = segment.segmentFrame
-//        }
+//        // Add Touch View
+//        touchView.removeFromSuperview()
+//        scrollView.addSubview(touchView)
+//        touchView.delegate = self
+//        touchView.frame = CGRect(origin: CGPointZero, size: self.scrollView.contentSize)
 //        
 //        // Add Segment SubLayers
 //        for (index, segment) in self.innerSegments.enumerate() {
@@ -548,8 +541,8 @@
 //    }
 //}
 //
-//extension WBSegmentControl: WBInnerSegmentDelegate {
-//    func didSelect(location: CGPoint) {
+//extension WBSegmentControl: WBTouchViewDelegate {
+//    public func didTouch(location: CGPoint) {
 //        selectedIndex = indexForTouch(location)
 //    }
 //}
@@ -559,10 +552,9 @@
 //    var type: WBSegmentType { get }
 //}
 //
-//class WBInnerSegment: UIView {
+//class WBInnerSegment {
 //    
 //    let content: WBSegmentContentProtocol
-//    var delegate: WBInnerSegmentDelegate?
 //    
 //    var segmentFrame: CGRect = CGRectZero
 //    var segmentWidth: CGFloat = 0
@@ -574,17 +566,6 @@
 //    
 //    init(content: WBSegmentContentProtocol) {
 //        self.content = content
-//        super.init(frame: CGRectZero)
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    
-//    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        super.touchesEnded(touches, withEvent: event)
-//        
-//        delegate?.didSelect(center)
 //    }
 //}
 //
@@ -607,4 +588,15 @@
 //
 //public enum WBSegmentNonScrollDistributionStyle {
 //    case Center, Left, Right, Average
+//}
+//
+//class WBTouchView: UIView {
+//    
+//    var delegate: WBTouchViewDelegate?
+//    
+//    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        if let touch = touches.first {
+//            delegate?.didTouch(touch.locationInView(self))
+//        }
+//    }
 //}
