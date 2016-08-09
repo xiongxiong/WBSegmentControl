@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "WBSegmentControl"
-  s.version          = "0.1.9"
+  s.version          = "0.2.0"
   s.summary          = "An easy to use, customizable segment control."
 
 # This description is used to generate tags and improve search results.

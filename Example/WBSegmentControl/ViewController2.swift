@@ -22,6 +22,7 @@ class ViewController2: UIViewController {
     let segmentCtrl_D = WBSegmentControl()
     let segmentCtrl_E = WBSegmentControl()
     let segmentCtrl_F = WBSegmentControl()
+    let segmentCtrl_G = WBSegmentControl()
     
     override func loadView() {
         super.loadView()
@@ -149,7 +150,7 @@ class ViewController2: UIViewController {
         segmentCtrl_F.snp_makeConstraints { (make) in
             make.leading.equalTo(self.view)
             make.trailing.equalTo(self.view)
-            make.top.equalTo(segmentCtrl_D.snp_bottom).offset(15)
+            make.top.equalTo(segmentCtrl_E.snp_bottom).offset(15)
             make.height.equalTo(40)
         }
         segmentCtrl_F.segments = [
@@ -167,6 +168,21 @@ class ViewController2: UIViewController {
             TextSegment(text: "Headlines"),
         ]
         segmentCtrl_F.style = .Cover
+        
+        self.view.addSubview(segmentCtrl_G)
+        segmentCtrl_G.snp_makeConstraints { (make) in
+            make.leading.equalTo(self.view)
+            make.trailing.equalTo(self.view)
+            make.top.equalTo(segmentCtrl_F.snp_bottom).offset(15)
+            make.height.equalTo(40)
+        }
+        segmentCtrl_G.segments = [
+            TextSegment(text: "News China"),
+            TextSegment(text: "World"),
+            TextSegment(text: "Science"),
+        ]
+        segmentCtrl_G.style = .Strip
+        segmentCtrl_G.nonScrollDistributionStyle = .Center
     }
     
     override func viewDidLoad() {
@@ -178,12 +194,7 @@ class ViewController2: UIViewController {
         segmentCtrl_D.selectedIndex = 0
         segmentCtrl_E.selectedIndex = 0
         segmentCtrl_F.selectedIndex = 0
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
+        segmentCtrl_G.selectedIndex = 0
     }
 }
 

@@ -114,6 +114,7 @@ public class WBSegmentControl: UIControl {
     // MARK: Inner properties
     private var scrollView: UIScrollView!
     private var touchView: WBTouchView = WBTouchView()
+    private var layerContainer: CALayer = CALayer()
     private var layerCover: CALayer = CALayer()
     private var layerStrip: CALayer = CALayer()
     private var layerArrow: CALayer = CALayer()
@@ -138,6 +139,10 @@ public class WBSegmentControl: UIControl {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.backgroundColor = self.contentBackgroundColor
+        scrollView.layer.addSublayer(layerContainer)
+        
+        scrollView.addSubview(touchView)
+        touchView.delegate = self
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -147,7 +152,7 @@ public class WBSegmentControl: UIControl {
     // MARK: Override methods
     override public func layoutSubviews() {
         super.layoutSubviews()
-        self.scrollView.layer.sublayers?.removeAll()
+        layerContainer.sublayers?.removeAll()
         
         // Compute Segment Size
         for (index, segment) in self.innerSegments.enumerate() {
@@ -193,9 +198,6 @@ public class WBSegmentControl: UIControl {
         }
         
         // Add Touch View
-        touchView.removeFromSuperview()
-        scrollView.addSubview(touchView)
-        touchView.delegate = self
         touchView.frame = CGRect(origin: CGPointZero, size: self.scrollView.contentSize)
         
         // Add Segment SubLayers
@@ -212,7 +214,7 @@ public class WBSegmentControl: UIControl {
                 if self.rainbow_colors.isEmpty == false {
                     layerStrip.backgroundColor = self.rainbow_colors[index % self.rainbow_colors.count].CGColor
                 }
-                self.scrollView.layer.addSublayer(layerStrip)
+                layerContainer.addSublayer(layerStrip)
                 self.switchRoundCornerForLayer(layerStrip, isRoundCorner: index == self.selectedIndex)
                 segment.layerStrip = layerStrip
             default:
@@ -232,14 +234,14 @@ public class WBSegmentControl: UIControl {
                 layerText.truncationMode = kCATruncationEnd
                 layerText.contentsScale = UIScreen.mainScreen().scale
                 layerText.foregroundColor = index == self.selectedIndex ? self.segmentTextForegroundColorSelected.CGColor : self.segmentTextForegroundColor.CGColor
-                self.scrollView.layer.addSublayer(layerText)
+                layerContainer.addSublayer(layerText)
                 segment.layerText = layerText
             case let .Icon(icon):
                 let layerIcon = CALayer()
                 let image = icon
                 layerIcon.frame = content_frame
                 layerIcon.contents = image.CGImage
-                self.scrollView.layer.addSublayer(layerIcon)
+                layerContainer.addSublayer(layerIcon)
                 segment.layerIcon = layerIcon
             }
         }
@@ -258,35 +260,35 @@ public class WBSegmentControl: UIControl {
             }
             layerMask.path = maskPath.CGPath
             layerSeparator.mask = layerMask
-            self.scrollView.layer.addSublayer(layerSeparator)
+            self.layerContainer.addSublayer(layerSeparator)
         }
         let initLayerCover = { [unowned self] in
             self.layerCover.frame = self.indicatorCoverFrame(self.selectedIndex)
             self.layerCover.backgroundColor = self.cover_color.CGColor
             self.layerCover.opacity = self.cover_opacity
-            self.scrollView.layer.addSublayer(self.layerCover)
+            self.layerContainer.addSublayer(self.layerCover)
         }
         let addLayerOutside = { [unowned self] in
             let outsideLayerLeft = CALayer()
             outsideLayerLeft.frame = CGRectMake(-1 * self.scrollView.frame.width, self.scrollView.frame.height - self.rainbow_height, self.scrollView.frame.width, self.rainbow_height)
             outsideLayerLeft.backgroundColor = self.rainbow_outsideColor.CGColor
-            self.scrollView.layer.addSublayer(outsideLayerLeft)
+            self.layerContainer.addSublayer(outsideLayerLeft)
             
             let outsideLayerRight = CALayer()
             outsideLayerRight.frame = CGRectMake(self.scrollView.contentSize.width, self.scrollView.frame.height - self.rainbow_height, self.scrollView.frame.width, self.rainbow_height)
             outsideLayerRight.backgroundColor = self.rainbow_outsideColor.CGColor
-            self.scrollView.layer.addSublayer(outsideLayerRight)
+            self.layerContainer.addSublayer(outsideLayerRight)
         }
         let addLayerSlideway = { [unowned self] (slidewayPosition: CGFloat, slidewayHeight: CGFloat, slidewayColor: UIColor) in
             let layerSlideway = CALayer()
             layerSlideway.frame = CGRectMake(-1 * self.scrollView.frame.width, slidewayPosition - slidewayHeight / 2, self.scrollView.contentSize.width + self.scrollView.frame.width * 2, slidewayHeight)
             layerSlideway.backgroundColor = slidewayColor.CGColor
-            self.scrollView.layer.addSublayer(layerSlideway)
+            self.layerContainer.addSublayer(layerSlideway)
         }
         let initLayerStrip = { [unowned self] (stripFrame: CGRect, stripColor: UIColor) in
             self.layerStrip.frame = stripFrame
             self.layerStrip.backgroundColor = stripColor.CGColor
-            self.scrollView.layer.addSublayer(self.layerStrip)
+            self.layerContainer.addSublayer(self.layerStrip)
         }
         let initLayerArrow = { [unowned self] (arrowFrame: CGRect, arrowLocation: WBSegmentIndicatorLocation, arrowColor: UIColor) in
             self.layerArrow.frame = arrowFrame
@@ -315,7 +317,7 @@ public class WBSegmentControl: UIControl {
             layerMask.path = maskPath.CGPath
             self.layerArrow.mask = layerMask
             
-            self.scrollView.layer.addSublayer(self.layerArrow)
+            self.layerContainer.addSublayer(self.layerArrow)
         }
         switch self.style {
         case .Cover:
