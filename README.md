@@ -8,7 +8,7 @@
 
 An easy to use, customizable segment control, can be used to show tabs.
 
-![WBSegmentControl](ScreenShot/WBSegmentControl.gif "WBSegmentControl")
+![WBSegmentControl](Framework/ScreenShot/WBSegmentControl.gif "WBSegmentControl")
 
 ## Contents
 - [Features](#features)
@@ -22,9 +22,9 @@ An easy to use, customizable segment control, can be used to show tabs.
 - [License](#license)
 
 ## Features
-- [x] Style - Rainbow | Cover | Strip | Arrow | ArrowStrip
-- [x] Action Delegate Support
-- [x] Segment Protocol Support
+- [x] Flexible style - rainbow | cover | strip | arrow | arrowStrip
+- [x] Action delegate support
+- [x] Customized segment
 
 ## Requirements
 
@@ -80,7 +80,7 @@ Run `carthage update` to build the framework and drag the built `WBSegmentContro
 
 ### Manually
 
-If you prefer not to use either of the aforementioned dependency managers, you can integrate Alamofire into your project manually.
+If you prefer not to use either of the aforementioned dependency managers, you can integrate WBSegmentControl into your project manually.
 
 ## Example
 
@@ -201,7 +201,7 @@ let selectedSegment: TextSegment? = segmentControl.selectedSegment as? TextSegme
 * strip_location: StripLocation = up | down
 * strip_color: UIColor
 * strip_height: CGFloat
-  
+
 ### Settings - indicatorStyle == .Rainbow
     public var rainbow_colors: [UIColor] = []
     public var rainbow_height: CGFloat = 3
