@@ -8,7 +8,7 @@
 
 An easy to use, customizable segment control, can be used to show tabs.
 
-![WBSegmentControl](ScreenShot/WBSegmentControl.gif "WBSegmentControl")
+![WBSegmentControl](Framework/ScreenShot/WBSegmentControl.gif "WBSegmentControl")
 
 ## Contents
 - [Features](#features)
@@ -201,7 +201,7 @@ let selectedSegment: TextSegment? = segmentControl.selectedSegment as? TextSegme
 * strip_location: StripLocation = up | down
 * strip_color: UIColor
 * strip_height: CGFloat
-  
+
 ### Settings - indicatorStyle == .Rainbow
     public var rainbow_colors: [UIColor] = []
     public var rainbow_height: CGFloat = 3
