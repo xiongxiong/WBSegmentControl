@@ -2,39 +2,113 @@
 
 [![CI Status](http://img.shields.io/travis/xiongxiong/WBSegmentControl.svg?style=flat)](https://travis-ci.org/xiongxiong/WBSegmentControl)
 [![Version](https://img.shields.io/cocoapods/v/WBSegmentControl.svg?style=flat)](http://cocoapods.org/pods/WBSegmentControl)
-[![License](https://img.shields.io/cocoapods/l/WBSegmentControl.svg?style=flat)](http://cocoapods.org/pods/WBSegmentControl)
 [![Platform](https://img.shields.io/cocoapods/p/WBSegmentControl.svg?style=flat)](http://cocoapods.org/pods/WBSegmentControl)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![License](https://img.shields.io/cocoapods/l/WBSegmentControl.svg?style=flat)](http://cocoapods.org/pods/WBSegmentControl)
 
-## Example
+An easy to use, customizable segment control, can be used to show tabs.
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## ScreenShot
 ![WBSegmentControl](ScreenShot/WBSegmentControl.gif "WBSegmentControl")
+
+## Contents
+- [Features](#features)
+- [Requirements](#requirements)
+- [Example](#example)
+- [Installation](#installation)
+- [Protocols](#protocols)
+- [Usage](#usage)
+- [Properties](#properties)
+- [Author](#author)
+- [License](#license)
+
+## Features
+- [x] Style - Rainbow | Cover | Strip | Arrow | ArrowStrip
+- [x] Action Delegate Support
+- [x] Segment Protocol Support
+
+## Requirements
+
+- iOS 8.0+ / Mac OS X 10.11+ / tvOS 9.0+
+- Xcode 8.0+
+- Swift 3.0+
 
 ## Installation
 
-WBSegmentControl is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### CocoaPods
 
-pod "WBSegmentControl"
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+To integrate WBSegmentControl into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+target '<Your Target Name>' do
+    pod 'WBSegmentControl', '~> 0.2.0'
+end
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate WBSegmentControl into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "xiongxiong/WBSegmentControl" ~> 0.2.0
+```
+
+Run `carthage update` to build the framework and drag the built `WBSegmentControl.framework` into your Xcode project.
+
+### Manually
+
+If you prefer not to use either of the aforementioned dependency managers, you can integrate Alamofire into your project manually.
+
+## Example
+
+Open the example project, build and run.
 
 ## Protocols
 
 ### WBSegmentControlDelegate
+
+```swift
 public protocol WBSegmentControlDelegate {
     func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int)
 }
+```
 
 ### WBSegmentProtocol
+
+```swift
 public protocol WBSegmentContentProtocol {
     var type: WBSegmentType { get }
 }
+```
 
 ## Usage
 
 ### Implement WBSegmentContentProtocol
 
+```swift
 class TextSegment: NSObject, WBSegmentContentProtocol {
 
     var text: String!
@@ -49,9 +123,13 @@ class TextSegment: NSObject, WBSegmentContentProtocol {
         self.text = text
     }
 }
+```
+
+IconSegment & TextSegment are already implemented, you can use it straightforwardly without implementing WBSegmentContentProtocol, or you can choose to implement WBSegmentContentProtocol to use your own segment type.
 
 ### Initialize segmentControl
 
+```swift
 let segmentControl = WBSegmentControl() // initialize
 view.addSubview(segmentControl)
 ...
@@ -61,52 +139,68 @@ segmentControl.segments = [
 ] // set segments
 segmentControl.style = .Rainbow // set style
 segmentControl.selectedIndex = 0 // set selected index
+```
 
 ### Implement WBSegmentControlDelegate
 
+```swift
 extension MyViewController: WBSegmentControlDelegate {
     func segmentControl(segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int) {
-    ...
+
     }
 }
+```
 
 ### Get selected segment
 
+```swift
 let selectedIndex = segmentControl.selectedIndex
 let selectedSegment: TextSegment? = segmentControl.selectedSegment as? TextSegment
+```
 
-## Customize
+## Properties
 
 ### Settings - Common
-    public var indicatorStyle: IndicatorStyle = .Rainbow
-    public var nonScrollDistributionStyle: NonScrollDistributionStyle = .Average
-    public var enableSeparator: Bool = false
-    public var separatorColor: UIColor = UIColor.blackColor()
-    public var separatorWidth: CGFloat = 9
-    public var separatorEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)
-    public var enableSlideway: Bool = false
-    public var slidewayHeight: CGFloat = 1
-    public var slidewayColor: UIColor = UIColor.lightGrayColor()
-    public var enableAnimation: Bool = true
-    public var animationDuration: NSTimeInterval = 0.15
-    public var contentBackgroundColor: UIColor = UIColor.whiteColor()
-    public var segmentMinWidth: CGFloat = 50
-    public var segmentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-    public var segmentTextBold: Bool = true
-    public var segmentTextFontSize: CGFloat = 12
-    public var segmentTextForegroundColor: UIColor = UIColor.grayColor()
-    public var segmentTextForegroundColorSelected: UIColor = UIColor.blackColor()
+
+* indicatorStyle: IndicatorStyle = rainbow | cover | strip | arrow | arrowStrip
+* nonScrollDistributionStyle: NonScrollDistributionStyle = center | left | right | average
+* enableSeparator: Bool
+* separatorColor: UIColor
+* separatorWidth: CGFloat
+* separatorEdgeInsets: UIEdgeInsets
+* enableSlideway: Bool
+* slidewayHeight: CGFloat
+* slidewayColor: UIColor
+* enableAnimation: Bool
+* animationDuration: NSTimeInterval
+* contentBackgroundColor: UIColor
+* segmentMinWidth: CGFloat
+* segmentEdgeInsets: UIEdgeInsets
+* segmentTextBold: Bool
+* segmentTextFontSize: CGFloat
+* segmentTextForegroundColor: UIColor
+* segmentTextForegroundColorSelected: UIColor
+
+### Settings - indicatorStyle == .Rainbow
+
+* rainbow_colors: [UIColor]
+* rainbow_height: CGFloat
+* rainbow_roundCornerRadius: CGFloat
+* rainbow_location: RainbowLocation = up | down
+* rainbow_outsideColor: UIColor
 
 ### Settings - indicatorStyle == .Cover
-    public var cover_range: CoverRange = .Segment
-    public var cover_opacity: Float = 0.2
-    public var cover_color: UIColor = UIColor.blackColor()
-  
+
+* cover_range: CoverRange = segment | content
+* cover_opacity: Float
+* cover_color: UIColor
+
 ### Settings - indicatorStyle == .Strip
-    public var strip_range: StripRange = .Content
-    public var strip_location: StripLocation = .Down
-    public var strip_color: UIColor = UIColor.orangeColor()
-    public var strip_height: CGFloat = 3
+
+* strip_range: StripRange = segment | content
+* strip_location: StripLocation = up | down
+* strip_color: UIColor
+* strip_height: CGFloat
   
 ### Settings - indicatorStyle == .Rainbow
     public var rainbow_colors: [UIColor] = []
@@ -114,18 +208,20 @@ let selectedSegment: TextSegment? = segmentControl.selectedSegment as? TextSegme
     public var rainbow_roundCornerRadius: CGFloat = 4
     public var rainbow_location: RainbowLocation = .Down
     public var rainbow_outsideColor: UIColor = UIColor.grayColor()
-    
+
 ### Settings - indicatorStyle == .Arrow
-    public var arrow_size: CGSize = CGSizeMake(6, 6)
-    public var arrow_location: ArrowLocation = .Down
-    public var arrow_color: UIColor = UIColor.orangeColor()
-   
+
+* arrow_size: CGSize
+* arrow_location: ArrowLocation = up | down
+* arrow_color: UIColor
+
 ### Settings - indicatorStyle == .ArrowStrip
-    public var arrowStrip_location: ArrowStripLocation = .Up
-    public var arrowStrip_color: UIColor = UIColor.orangeColor()
-    public var arrowStrip_arrowSize: CGSize = CGSizeMake(6, 6)
-    public var arrowStrip_stripHeight: CGFloat = 2
-    public var arrowStrip_stripRange: ArrowStripRange = .Content
+
+* arrowStrip_location: ArrowStripLocation = up | down
+* arrowStrip_color: UIColor
+* arrowStrip_arrowSize: CGSize
+* arrowStrip_stripHeight: CGFloat
+* arrowStrip_stripRange: ArrowStripRange = segment | content
 
 ## Author
 

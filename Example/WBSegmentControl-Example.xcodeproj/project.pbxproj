@@ -17,6 +17,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		42A097B21DC1DC50009077CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 42DDC79D1D8F6F25005409EE;
+			remoteInfo = WBSegmentControl;
+		};
+		42A097B41DC1DC50009077CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 42DDC7A61D8F6F25005409EE;
+			remoteInfo = WBSegmentControlTests;
+		};
+		42A097B61DC1DC61009077CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 42DDC79C1D8F6F25005409EE;
+			remoteInfo = WBSegmentControl;
+		};
 		42DDC7D81D8F7022005409EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 42DDC7BB1D8F7022005409EE /* Project object */;
@@ -34,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WBSegmentControl.xcodeproj; path = ../Framework/WBSegmentControl.xcodeproj; sourceTree = "<group>"; };
 		42DDC7C31D8F7022005409EE /* WBSegmentControl-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WBSegmentControl-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DDC7C61D8F7022005409EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DDC7C81D8F7022005409EE /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
@@ -74,9 +96,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42A097AE1DC1DC50009077CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42A097B31DC1DC50009077CF /* WBSegmentControl.framework */,
+				42A097B51DC1DC50009077CF /* WBSegmentControlTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		42DDC7BA1D8F7022005409EE = {
 			isa = PBXGroup;
 			children = (
+				42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */,
 				42DDC7C51D8F7022005409EE /* WBSegmentControl-Example */,
 				42DDC7DA1D8F7022005409EE /* WBSegmentControl-ExampleTests */,
 				42DDC7E51D8F7022005409EE /* WBSegmentControl-ExampleUITests */,
@@ -147,6 +179,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				42A097B71DC1DC61009077CF /* PBXTargetDependency */,
 			);
 			name = "WBSegmentControl-Example";
 			productName = "WBSegmentControl-Example";
@@ -227,6 +260,12 @@
 			mainGroup = 42DDC7BA1D8F7022005409EE;
 			productRefGroup = 42DDC7C41D8F7022005409EE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 42A097AE1DC1DC50009077CF /* Products */;
+					ProjectRef = 42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				42DDC7C21D8F7022005409EE /* WBSegmentControl-Example */,
@@ -235,6 +274,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		42A097B31DC1DC50009077CF /* WBSegmentControl.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = WBSegmentControl.framework;
+			remoteRef = 42A097B21DC1DC50009077CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		42A097B51DC1DC50009077CF /* WBSegmentControlTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = WBSegmentControlTests.xctest;
+			remoteRef = 42A097B41DC1DC50009077CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		42DDC7C11D8F7022005409EE /* Resources */ = {
@@ -292,6 +348,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		42A097B71DC1DC61009077CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WBSegmentControl;
+			targetProxy = 42A097B61DC1DC61009077CF /* PBXContainerItemProxy */;
+		};
 		42DDC7D91D8F7022005409EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 42DDC7C21D8F7022005409EE /* WBSegmentControl-Example */;
