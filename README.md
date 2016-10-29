@@ -22,9 +22,9 @@ An easy to use, customizable segment control, can be used to show tabs.
 - [License](#license)
 
 ## Features
-- [x] Style - Rainbow | Cover | Strip | Arrow | ArrowStrip
-- [x] Action Delegate Support
-- [x] Segment Protocol Support
+- [x] Flexible style - rainbow | cover | strip | arrow | arrowStrip
+- [x] Action delegate support
+- [x] Customized segment
 
 ## Requirements
 
@@ -80,7 +80,7 @@ Run `carthage update` to build the framework and drag the built `WBSegmentContro
 
 ### Manually
 
-If you prefer not to use either of the aforementioned dependency managers, you can integrate Alamofire into your project manually.
+If you prefer not to use either of the aforementioned dependency managers, you can integrate WBSegmentControl into your project manually.
 
 ## Example
 
