@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		424209281E0CC1790081F7A1 /* WBSegmentControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 424209231E0CC1620081F7A1 /* WBSegmentControl.framework */; };
+		424209291E0CC1860081F7A1 /* WBSegmentControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 424209231E0CC1620081F7A1 /* WBSegmentControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		42DDC7C71D8F7022005409EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDC7C61D8F7022005409EE /* AppDelegate.swift */; };
 		42DDC7C91D8F7022005409EE /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDC7C81D8F7022005409EE /* ViewController1.swift */; };
 		42DDC7CE1D8F7022005409EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DDC7CD1D8F7022005409EE /* Assets.xcassets */; };
@@ -17,23 +19,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		42A097B21DC1DC50009077CF /* PBXContainerItemProxy */ = {
+		424209221E0CC1620081F7A1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */;
+			containerPortal = 4242091D1E0CC1620081F7A1 /* WBSegmentControl.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 42DDC79D1D8F6F25005409EE;
 			remoteInfo = WBSegmentControl;
 		};
-		42A097B41DC1DC50009077CF /* PBXContainerItemProxy */ = {
+		424209241E0CC1620081F7A1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */;
+			containerPortal = 4242091D1E0CC1620081F7A1 /* WBSegmentControl.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 42DDC7A61D8F6F25005409EE;
 			remoteInfo = WBSegmentControlTests;
 		};
-		42A097B61DC1DC61009077CF /* PBXContainerItemProxy */ = {
+		424209261E0CC1700081F7A1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */;
+			containerPortal = 4242091D1E0CC1620081F7A1 /* WBSegmentControl.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 42DDC79C1D8F6F25005409EE;
 			remoteInfo = WBSegmentControl;
@@ -54,8 +56,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4294CB6E1DEB075E0053068B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				424209291E0CC1860081F7A1 /* WBSegmentControl.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WBSegmentControl.xcodeproj; path = ../Framework/WBSegmentControl.xcodeproj; sourceTree = "<group>"; };
+		4242091D1E0CC1620081F7A1 /* WBSegmentControl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WBSegmentControl.xcodeproj; path = ../Framework/WBSegmentControl.xcodeproj; sourceTree = "<group>"; };
 		42DDC7C31D8F7022005409EE /* WBSegmentControl-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WBSegmentControl-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DDC7C61D8F7022005409EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DDC7C81D8F7022005409EE /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
@@ -72,10 +88,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		42DDC7C01D8F7022005409EE /* Frameworks */ = {
+		42A231161DE829C100351DA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				424209281E0CC1790081F7A1 /* WBSegmentControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,11 +113,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		42A097AE1DC1DC50009077CF /* Products */ = {
+		4242091E1E0CC1620081F7A1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				42A097B31DC1DC50009077CF /* WBSegmentControl.framework */,
-				42A097B51DC1DC50009077CF /* WBSegmentControlTests.xctest */,
+				424209231E0CC1620081F7A1 /* WBSegmentControl.framework */,
+				424209251E0CC1620081F7A1 /* WBSegmentControlTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,7 +125,7 @@
 		42DDC7BA1D8F7022005409EE = {
 			isa = PBXGroup;
 			children = (
-				42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */,
+				4242091D1E0CC1620081F7A1 /* WBSegmentControl.xcodeproj */,
 				42DDC7C51D8F7022005409EE /* WBSegmentControl-Example */,
 				42DDC7DA1D8F7022005409EE /* WBSegmentControl-ExampleTests */,
 				42DDC7E51D8F7022005409EE /* WBSegmentControl-ExampleUITests */,
@@ -173,13 +190,14 @@
 			buildConfigurationList = 42DDC7EB1D8F7022005409EE /* Build configuration list for PBXNativeTarget "WBSegmentControl-Example" */;
 			buildPhases = (
 				42DDC7BF1D8F7022005409EE /* Sources */,
-				42DDC7C01D8F7022005409EE /* Frameworks */,
+				42A231161DE829C100351DA5 /* Frameworks */,
 				42DDC7C11D8F7022005409EE /* Resources */,
+				4294CB6E1DEB075E0053068B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				42A097B71DC1DC61009077CF /* PBXTargetDependency */,
+				424209271E0CC1700081F7A1 /* PBXTargetDependency */,
 			);
 			name = "WBSegmentControl-Example";
 			productName = "WBSegmentControl-Example";
@@ -234,7 +252,7 @@
 				TargetAttributes = {
 					42DDC7C21D8F7022005409EE = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 9L9NV96FHH;
+						DevelopmentTeam = M793737CLS;
 						ProvisioningStyle = Automatic;
 					};
 					42DDC7D61D8F7022005409EE = {
@@ -262,8 +280,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 42A097AE1DC1DC50009077CF /* Products */;
-					ProjectRef = 42A097AD1DC1DC50009077CF /* WBSegmentControl.xcodeproj */;
+					ProductGroup = 4242091E1E0CC1620081F7A1 /* Products */;
+					ProjectRef = 4242091D1E0CC1620081F7A1 /* WBSegmentControl.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -276,18 +294,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		42A097B31DC1DC50009077CF /* WBSegmentControl.framework */ = {
+		424209231E0CC1620081F7A1 /* WBSegmentControl.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = WBSegmentControl.framework;
-			remoteRef = 42A097B21DC1DC50009077CF /* PBXContainerItemProxy */;
+			remoteRef = 424209221E0CC1620081F7A1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		42A097B51DC1DC50009077CF /* WBSegmentControlTests.xctest */ = {
+		424209251E0CC1620081F7A1 /* WBSegmentControlTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = WBSegmentControlTests.xctest;
-			remoteRef = 42A097B41DC1DC50009077CF /* PBXContainerItemProxy */;
+			remoteRef = 424209241E0CC1620081F7A1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -348,10 +366,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		42A097B71DC1DC61009077CF /* PBXTargetDependency */ = {
+		424209271E0CC1700081F7A1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = WBSegmentControl;
-			targetProxy = 42A097B61DC1DC61009077CF /* PBXContainerItemProxy */;
+			targetProxy = 424209261E0CC1700081F7A1 /* PBXContainerItemProxy */;
 		};
 		42DDC7D91D8F7022005409EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -474,10 +492,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9L9NV96FHH;
+				DEVELOPMENT_TEAM = M793737CLS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WBSegmentControl-Example",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "WBSegmentControl-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -491,10 +510,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9L9NV96FHH;
+				DEVELOPMENT_TEAM = M793737CLS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WBSegmentControl-Example",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "WBSegmentControl-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
