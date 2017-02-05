@@ -159,6 +159,7 @@ class ViewController2: UIViewController {
             TextSegment(text: "Headlines"),
         ]
         segmentCtrl_F.style = .cover
+        segmentCtrl_F.backgroundColor = UIColor.cyan
         
         self.view.addSubview(segmentCtrl_G)
         segmentCtrl_G.translatesAutoresizingMaskIntoConstraints = false

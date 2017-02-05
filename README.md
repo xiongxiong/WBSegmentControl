@@ -1,5 +1,6 @@
 # WBSegmentControl
 
+[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![CI Status](http://img.shields.io/travis/xiongxiong/WBSegmentControl.svg?style=flat)](https://travis-ci.org/xiongxiong/WBSegmentControl)
 [![Version](https://img.shields.io/cocoapods/v/WBSegmentControl.svg?style=flat)](http://cocoapods.org/pods/WBSegmentControl)
 [![Platform](https://img.shields.io/cocoapods/p/WBSegmentControl.svg?style=flat)](http://cocoapods.org/pods/WBSegmentControl)

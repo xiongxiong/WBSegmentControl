@@ -38,7 +38,7 @@ public class WBSegmentControl: UIControl {
 
     // MARK: Configuration - Interaction
     public var delegate: WBSegmentControlDelegate?
-    public var selectedIndex: Int = -1 {
+    public var selectedIndex: Int = 0 {
         didSet {
             if selectedIndex != oldValue && validIndex(selectedIndex) {
                 selectedIndexChanged(selectedIndex, oldIndex: oldValue)
@@ -62,13 +62,12 @@ public class WBSegmentControl: UIControl {
     public var slidewayColor: UIColor = UIColor.lightGray
     public var enableAnimation: Bool = true
     public var animationDuration: TimeInterval = 0.15
-    public var contentBackgroundColor: UIColor = UIColor.white
     public var segmentMinWidth: CGFloat = 50
     public var segmentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     public var segmentTextBold: Bool = true
     public var segmentTextFontSize: CGFloat = 12
-    public var segmentTextForegroundColor: UIColor = UIColor.gray
-    public var segmentTextForegroundColorSelected: UIColor = UIColor.black
+    public var segmentForegroundColor: UIColor = UIColor.gray
+    public var segmentForegroundColorSelected: UIColor = UIColor.black
 
     // Settings - Cover
     public typealias CoverRange = WBSegmentIndicatorRange
@@ -139,7 +138,6 @@ public class WBSegmentControl: UIControl {
         self.addConstraint(NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0))
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
-        scrollView.backgroundColor = self.contentBackgroundColor
         scrollView.layer.addSublayer(layerContainer)
 
         scrollView.addSubview(touchView)
@@ -234,7 +232,7 @@ public class WBSegmentControl: UIControl {
                 layerText.alignmentMode = kCAAlignmentCenter
                 layerText.truncationMode = kCATruncationEnd
                 layerText.contentsScale = UIScreen.main.scale
-                layerText.foregroundColor = index == self.selectedIndex ? self.segmentTextForegroundColorSelected.cgColor : self.segmentTextForegroundColor.cgColor
+                layerText.foregroundColor = index == self.selectedIndex ? self.segmentForegroundColorSelected.cgColor : self.segmentForegroundColor.cgColor
                 layerContainer.addSublayer(layerText)
                 segment.layerText = layerText
             case let .icon(icon):
@@ -411,7 +409,7 @@ public class WBSegmentControl: UIControl {
             switch self.innerSegments[oldIndex].content.type {
             case .text:
                 if let old_contentLayer = self.innerSegments[oldIndex].layerText as? CATextLayer {
-                    old_contentLayer.foregroundColor = self.segmentTextForegroundColor.cgColor
+                    old_contentLayer.foregroundColor = self.segmentForegroundColor.cgColor
                 }
             default:
                 break
@@ -420,7 +418,7 @@ public class WBSegmentControl: UIControl {
         switch self.innerSegments[newIndex].content.type {
         case .text:
             if let new_contentLayer = self.innerSegments[newIndex].layerText as? CATextLayer {
-                new_contentLayer.foregroundColor = self.segmentTextForegroundColorSelected.cgColor
+                new_contentLayer.foregroundColor = self.segmentForegroundColorSelected.cgColor
             }
         default:
             break
