@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol WBSegmentControlDelegate {
+public protocol WBSegmentControlDelegate: class {
     func segmentControl(_ segmentControl: WBSegmentControl, selectIndex newIndex: Int, oldIndex: Int)
 }
 
@@ -37,7 +37,7 @@ public class WBSegmentControl: UIControl {
     var innerSegments: [WBInnerSegment] = []
 
     // MARK: Configuration - Interaction
-    public var delegate: WBSegmentControlDelegate?
+    public weak var delegate: WBSegmentControlDelegate?
     public var selectedIndex: Int = 0 {
         didSet {
             if selectedIndex != oldValue && validIndex(selectedIndex) {
