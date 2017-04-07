@@ -37,8 +37,13 @@ public class WBSegmentControl: UIControl {
     var innerSegments: [WBInnerSegment] = []
 
     // MARK: Configuration - Interaction
-    public weak var delegate: WBSegmentControlDelegate?
+<<<<<<< HEAD
+    public var delegate: WBSegmentControlDelegate?
     public var selectedIndex: Int = -1 {
+=======
+    public weak var delegate: WBSegmentControlDelegate?
+    public var selectedIndex: Int = 0 {
+>>>>>>> daee6619dc33562f676bb2bd4af3be0204273206
         didSet {
             if selectedIndex != oldValue && validIndex(selectedIndex) {
                 selectedIndexChanged(selectedIndex, oldIndex: oldValue)
