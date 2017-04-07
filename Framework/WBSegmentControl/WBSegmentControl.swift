@@ -38,7 +38,7 @@ public class WBSegmentControl: UIControl {
 
     // MARK: Configuration - Interaction
     public var delegate: WBSegmentControlDelegate?
-    public var selectedIndex: Int = 0 {
+    public var selectedIndex: Int = -1 {
         didSet {
             if selectedIndex != oldValue && validIndex(selectedIndex) {
                 selectedIndexChanged(selectedIndex, oldIndex: oldValue)
